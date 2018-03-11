@@ -232,7 +232,7 @@ class ImageBrowserp extends React.Component {
     //
     _item = () => {
         if ( this.state.selected === -1 ) {
-            return <div><h2> Please select a report to view the images. rAf at work...</h2></div>
+            return <div><h2> Please select a report to view the images. restAF at work...</h2></div>
         } else {
             let im = null;
             debugger;
@@ -288,17 +288,17 @@ class ImageBrowserp extends React.Component {
         store.apiCall( imageService.links( 'createJob' ), payload )
              .then( job => store.jobState( job, null, 5 ) ) /*  default long poll times, max tries = 5  */
              .then( status => {
-                 if ( status.running > 0 || status.detail.failed > 0 ) {
-                     throw status.jobState.data;
+                 if ( status.data !== 'complete' ) {
+                     return status.job;
                  } else {
-                     return status.jobState.job;
+                     throw { Error: `Job did not complete:  ${status.data}` };
                  }
              } )
              .then( newJob => {
-                 imageJob    = newJob;
+                 imageJob = newJob;
                  sectionName = newJob.items( newJob.itemsList( 0 ), 'data', 'sectionName' );
                  return store.apiCall( newJob.itemsCmd( newJob.itemsList( 0 ), 'image' ) )
-             } ) /* get the image ( svg in this case) */
+             } )
              .then( image => {
                  cb( null, { imageJob: imageJob, sectionName: sectionName,  svg: image.items() } )
              } )

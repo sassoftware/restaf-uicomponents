@@ -43666,7 +43666,7 @@ var ImageBrowserp = function (_React$Component) {
                     _react2.default.createElement(
                         'h2',
                         null,
-                        ' Please select a report to view the images. rAf at work...'
+                        ' Please select a report to view the images. restAF at work...'
                     )
                 );
             } else {
@@ -43726,17 +43726,16 @@ var ImageBrowserp = function (_React$Component) {
                 return store.jobState(job, null, 5);
             }) /*  default long poll times, max tries = 5  */
             .then(function (status) {
-                if (status.running > 0 || status.detail.failed > 0) {
-                    throw status.jobState.data;
+                if (status.data !== 'complete') {
+                    return status.job;
                 } else {
-                    return status.jobState.job;
+                    throw { Error: 'Job did not complete:  ' + status.data };
                 }
             }).then(function (newJob) {
                 imageJob = newJob;
                 sectionName = newJob.items(newJob.itemsList(0), 'data', 'sectionName');
                 return store.apiCall(newJob.itemsCmd(newJob.itemsList(0), 'image'));
-            }) /* get the image ( svg in this case) */
-            .then(function (image) {
+            }).then(function (image) {
                 cb(null, { imageJob: imageJob, sectionName: sectionName, svg: image.items() });
             }).catch(function (err) {
                 cb(err, null);
