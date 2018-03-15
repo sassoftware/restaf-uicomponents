@@ -92,8 +92,9 @@ class _ServicePromptp extends React.Component {
         }
         if ( value.length > 0 ) {
             this.context.store.addServices( value )
-                .then( f => {
-                    debugger;
+                .then( services => {
+                    let f = services[value];
+
                     let path = `/${f.type}`;
                     let parm = {
                         route       : f.route,
@@ -104,7 +105,6 @@ class _ServicePromptp extends React.Component {
                     this.props.history.push( path, parm );
                 } )
                 .catch( err => {
-                    debugger;
                     this.setState( {err: err} );
                 } )
         }
