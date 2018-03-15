@@ -48321,8 +48321,9 @@ var _ServicePromptp = function (_React$Component) {
                 value = _this.state.select;
             }
             if (value.length > 0) {
-                _this.context.store.addServices(value).then(function (f) {
-                    debugger;
+                _this.context.store.addServices(value).then(function (services) {
+                    var f = services[value];
+
                     var path = '/' + f.type;
                     var parm = {
                         route: f.route,
@@ -48332,7 +48333,6 @@ var _ServicePromptp = function (_React$Component) {
                     _this.setState({ err: null });
                     _this.props.history.push(path, parm);
                 }).catch(function (err) {
-                    debugger;
                     _this.setState({ err: err });
                 });
             }
