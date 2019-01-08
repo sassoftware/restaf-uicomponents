@@ -29,7 +29,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-ace": "^5.9.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.7.0",
     "react-file-input": "^0.2.5",
     "react-frame-component": "^2.0.2",
     "react-pretty-json": "^2.0.2",
