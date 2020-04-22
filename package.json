@@ -1,6 +1,6 @@
 {
   "name": "restaf-uicomponents",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Examples using restaf in react components ",
   "author": "Deva Kumaraswamy <deva.kumar@sas.com>",
   "license": "Apache-2.0",
@@ -9,6 +9,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config=webpack.config.js"
   },
@@ -23,6 +24,7 @@
     "brace": "^0.11.0",
     "markup-frame": "^1.0.0",
     "material-ui": "^0.20.0",
+    "minimist": "^1.2.3",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-ace": "^5.9.0",
@@ -52,10 +54,9 @@
     "webpack": "^3.10.0"
   },
   "resolutions": {
-    "**/js-yaml": "^3.13.0",
-    "**/mem": "^5.1.1",
-    "**/minimist": "^1.2.3",
-    "**/kind-of": "^6.0.3",
-    "**/acorn": "^5.7.4"
+    "js-yaml": "3.13.1",
+    "mem": "4.0.0",
+    "kind-of": "^6.0.3",
+    "acorn": "^5.7.4"
   }
 }
