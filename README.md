@@ -1,4 +1,4 @@
-# restaf-uicomponents
+# [ARCHIVED] restaf-uicomponents
 
 This is a collection of components used in the restaf-uidemos and restaf-apiexplorer projects.
 These components show how to use restaf with react components like
